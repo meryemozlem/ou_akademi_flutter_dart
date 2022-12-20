@@ -1,7 +1,3 @@
-import 'dart:ffi';
-
-import 'package:flutter/cupertino.dart';
-
 void main() {
   // değişkenler
   const dart101 = "I LOVE DART";
