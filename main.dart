@@ -10,7 +10,7 @@ void main() {
 
   //a = "Nur";
   //print(a);
-
+  //var ve degisken tiplerinin degerleri degisir.ilk atandığı gibi kalmayabilir.
   var dart_var = "THIS IS VARIABLE";
   print(dart_var);
 
@@ -40,6 +40,7 @@ void main() {
 
   // ya var kullan ya da int. ikisi aynı anda kullanılamaz. var int = HATA
   // 3 ifade de birbirinin aynısı işlevleri görür.
+  // veri tipi  degisken adi = deger.;
   double number_double = 99.0;
   var number_double2 = 10.0 as double;
   var number_double3 = 10.0;
@@ -62,7 +63,7 @@ void main() {
   //str içindeki ASCII karakterler görünür. \ ile \n ve \$ görünür.
   String name11 = r"\nsizden de calismaniz beklenir.";
   String name12 = 'The price is \$100';
-  // ${} farklı degiskenelri str içinde kullanırız ve farklı islemler yaparız. tek1 degiskende yalnızcaa $ yapariz.
+  // ${} farklı degiskenelri str içinde kullanırız ve farklı islemler yaparız. tek1 degiskende yalnızca $ yapariz.
   String name13 = "maasimiz ${number_int + number_4}";
   String name14 = "maasimiz \$${number_int + number2}.";
   print(name9 + " " + name10);
@@ -70,7 +71,7 @@ void main() {
   print(name13);
   print(name14);
 
-  //uzun bir kodda, tırnklar sonrası bolunebilir.
+  //uzun bir kodda, tırnaklar sonrası bolunebilir.
   String name15 = """I love to develop
    applications with Flutter 
    $number_int <3 """;
@@ -81,7 +82,7 @@ void main() {
   bool isTrue = (number_3 > number2);
   print(isTrue);
 
-//null case. tipin yanına ? ile nullable type yap. late den guvenli.
+//null// case. tipin yanına ? ile nullable type yap. late den guvenli.
   String? user_name;
   print(user_name);
 
@@ -97,17 +98,19 @@ void main() {
   int c = (num1 + num2);
   var d = (num1 - num2);
   var e = (num1 * num2);
-  //normalde 0.555556 idi bu float değeri int e yuvarladık. round ile
+  //normalde 0.555556 idi bu float değeri int e yuvarladık. round ile yuvarlarım, toStringAsFixed ile de istediğim değerleri görörüm.
   var f = (num1 / num2).toStringAsFixed(2);
   print(c);
   print(d);
   print(e);
   print(f);
 
+//num1=5
   num1++;
   num1 += 2;
   num1 -= 2;
   print(num1);
+  //num2=9
   bool isBigger = num1 > num2;
   print(isBigger);
   bool isSame = num1 <= num1;
@@ -131,7 +134,7 @@ void main() {
   var m = num3.round();
   print(num3);
   print(m);
-  //islrm num uzerinden yapılır ama mz ye atanmaz
+  //islrm num uzerinden yapılır ama mz ye atanmaz, deger degiismez
   var mz = num3
     ..round()
     ..compareTo(5);
@@ -139,7 +142,7 @@ void main() {
   // ?? deger yalniz null ise bu operator atanır
 
   //KOŞUL VE DÖNGÜLER
-  // if-else for while-do while break-continue switch-case assert
+  // if-else for while-do while break-continue switch-case assert try-catch
 
   var num4 = 5; //1
   if (num4 > 2) {
@@ -152,11 +155,12 @@ void main() {
     print("Number is not bigger");
   }
 
-  //return ile diğer komut içine girmez
+  //return ile diğer komut içine girmez. sadece is eight yazar biggeer 5 yazmaz.
   var num5 = 8; //1 5
   if (num5 > 5) {
     if (num5 == 8) {
-      return print("Number is eight");
+      //return
+      print("Number is eight");
     }
     print("Number is bigger than 5");
   } else {
@@ -165,5 +169,48 @@ void main() {
 
   for (var i = 0; i <= 7; i++) {
     print("Number is $i");
+  }
+
+  print("*****************Deneme*********************");
+
+  for (var i = 0; i <= 7; i++) {
+    print("Number is $i");
+  }
+  var numberr = 5;
+  var j = 0;
+  //While ile sonsuz döngüyü kırmak için break kullan
+  //while (true) {
+  //j += 1;
+  //print("Number is $number");
+  //if (j == 100) {
+  //break;
+  //}
+
+//do-while
+  do {
+    j += 1;
+    print("Number is $number");
+    if (j == 1000) {
+      break;
+    }
+  } while (true);
+
+// number=5; 3 olsaydı case is 3 çıkardı.
+  switch (number) {
+    case 1:
+      print("Case Success");
+      break;
+    case 2:
+      print("Case is 2");
+      break;
+    case 3:
+      print("Case is 3");
+      break;
+    case 4:
+      print("Case is 4");
+      break;
+    // bu caselerin hiçbiri olmazsa, default var.
+    default:
+      print("None");
   }
 }
