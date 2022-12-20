@@ -1,2 +1,6 @@
 # ou_akademi_flutter_dart
-dart dilii ve flutter uygulama egzersizleri
+Dart dili kullanımı.
+değişkenler
+Veri Tipleri
+Operatörler
+Koşul ve Döngüler
