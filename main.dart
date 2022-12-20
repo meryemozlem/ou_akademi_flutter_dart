@@ -94,4 +94,80 @@ void main() {
   //onceden tanımlandı degeri, de sonradan atandı.
   usname = "Sercan";
   print(usname);
+
+  // Operatorler
+  int num1 = 5;
+  int num2 = 9;
+  int c = (num1 + num2);
+  var d = (num1 - num2);
+  var e = (num1 * num2);
+  //normalde 0.555556 idi bu float değeri int e yuvarladık. round ile
+  var f = (num1 / num2).toStringAsFixed(2);
+  print(c);
+  print(d);
+  print(e);
+  print(f);
+
+  num1++;
+  num1 += 2;
+  num1 -= 2;
+  print(num1);
+  bool isBigger = num1 > num2;
+  print(isBigger);
+  bool isSame = num1 <= num1;
+  print(isSame);
+
+//num2 5 den ? big veya eşitse arttır  : değilse kendisini yaz. kisa yoldan if.
+  int hesap = num2 >= 5 ? num2 += 1 : num2;
+  print(hesap);
+  // null ise(??)num2 yazdır.
+  int? emptynumber;
+  emptynumber = 2;
+  int hsp = emptynumber ?? num2;
+  print(hsp);
+
+//as is
+//!=null? null değilse ==null? null a eşitse
+  int hsp2 = emptynumber != null ? 8 : emptynumber;
+  print(hsp2);
+
+  double num3 = 5.22;
+  var m = num3.round();
+  print(num3);
+  print(m);
+  //islrm num uzerinden yapılır ama mz ye atanmaz
+  var mz = num3
+    ..round()
+    ..compareTo(5);
+  print(mz);
+  // ?? deger yalniz null ise bu operator atanır
+
+  //KOŞUL VE DÖNGÜLER
+  // if-else for while-do while break-continue switch-case assert
+
+  var num4 = 5; //1
+  if (num4 > 2) {
+    print("Number is biggger");
+  } else if (num4 >= 5 && num4 < 9) {
+    print("Number is between 5 and 9");
+  } else if (num4 > 8 && num4 < 10) {
+    print("Number is between 8 and 10");
+  } else {
+    print("Number is not bigger");
+  }
+
+  //return ile diğer komut içine girmez
+  var num5 = 8; //1 5
+  if (num5 > 5) {
+    if (num5 == 8) {
+      return print("Number is eight");
+    }
+    print("Number is bigger than 5");
+  } else {
+    print("The number is smaller 10");
+  }
+
+  for (var i = 0; i <= 7; i++) {
+    print("Number is $i");
+  }
 }
