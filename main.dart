@@ -123,6 +123,7 @@ void main() {
   int? emptynumber;
   emptynumber = 2;
   int hsp = emptynumber ?? num2;
+  //num2;
   print(hsp);
 
 //as is
@@ -171,46 +172,81 @@ void main() {
     print("Number is $i");
   }
 
-  print("*****************Deneme*********************");
+  print("*****************Devam*********************");
 
-  for (var i = 0; i <= 7; i++) {
-    print("Number is $i");
-  }
   var numberr = 5;
-  var j = 0;
   //While ile sonsuz döngüyü kırmak için break kullan
-  //while (true) {
-  //j += 1;
-  //print("Number is $number");
-  //if (j == 100) {
-  //break;
-  //}
-
-//do-while
-  do {
+  var j = 0;
+  while (true) {
     j += 1;
-    print("Number is $number");
-    if (j == 1000) {
+    print("Number is $numberr");
+    if (j == 20) {
       break;
     }
-  } while (true);
 
-// number=5; 3 olsaydı case is 3 çıkardı.
-  switch (number) {
-    case 1:
-      print("Case Success");
-      break;
-    case 2:
-      print("Case is 2");
-      break;
-    case 3:
-      print("Case is 3");
-      break;
-    case 4:
-      print("Case is 4");
-      break;
-    // bu caselerin hiçbiri olmazsa, default var.
-    default:
-      print("None");
+    var m = 0;
+//do-while
+    do {
+      m++;
+      print("Number is $m");
+      if (m == 10) {
+        break;
+      }
+    } while (true);
+
+// switch case
+// numberr=5; 3 olsaydı case is 3 çıkardı.
+    switch (numberr) {
+      case 1:
+        print("Case Success");
+        break;
+
+      case 2:
+        print("Case is 2");
+        break;
+
+      case 3:
+        print("Case is 3");
+        break;
+
+      case 4:
+        print("Case is 4");
+        break;
+
+      // bu caselerin hiçbiri olmazsa, default var.O çalışır.
+      default:
+        print("None");
+    }
   }
+  for (int k = 0; k < 5; k++) {
+    //01234
+    print(k + 1);
+    k++;
+  }
+  //Try Hata çıkma ihtimali olan kodun yazıldığı yer.
+  //Catch try içindeki hatayı yakalayna blok
+  var numbber;
+  try {
+    if (numbber > 1) {
+      print(numbber);
+    }
+  } on Exception {
+    //throw: bir şeyi yakaladığıma onu tekrardan atmak.
+    //throw, yazılan kodlarda çıkabilecek hatalarda özgü hatalar göndermek için kullanılan bloktur.
+
+    throw "error";
+    //Hataları Kategorize Etmek
+    //on birçok defa kullanılan ve öngörülen hataların yazıldığı blok.
+    //on NoSuchMethodError catch (e) {print(e);}
+    //on NullThrowError catch(e) {print(e);}
+
+  } catch (e) {
+    print(e);
+  }
+  //Eğer nubber değeri hiçbir değere eşit olmasaydı, hata verirdi bize. Bizde bu sorunun neden kaynaklı old. nu görmek için try catch yapısı içine alırız.
+   finally {
+    //istedigim seyle bitiririm. Finally ne olursa olsun her koşulda çalışması istenilen kodların yazıldığı bloktur.
+    print("mission abort");
+  }
+  //Gelecek hata direkt kullanıcıya gitmez. Elimine edilir. Sonucunda da finally ile istenen yazılır.
 }
