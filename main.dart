@@ -249,4 +249,56 @@ void main() {
     print("mission abort");
   }
   //Gelecek hata direkt kullanıcıya gitmez. Elimine edilir. Sonucunda da finally ile istenen yazılır.
+
+  print("**********Fonksiyonlar*************");
+  // void main() {} void boş değer döndüren, uygulamaya giriş fonksiyonu. Bu fonsiyon altında birçok fonk. çalışır.
+
+  // void main() {} void boş değer döndüren, uygulamaya giriş fonksiyonu. Bu fonsiyon altında birçok fonk. çalışır.
+  void main() {
+    var ad = "Dart";
+    printDart(ad);
+    print(printDart(ad));
+    print(hesapla(3, 10));
+    print(("\$${vergi_hsp(99.90).toStringAsFixed(2)}"));
+    //Conditional olan parametreyi değiştirdik ve 10 değerini atadık.
+
+    print(vergi_hsp2(100, taxRate: 10));
+    print(vergi_hsp3(85, 40));
+    print(calculate_tax(70.90));
+  }
+
+// fonksiyon yaz.
+  String printDart(String ad) {
+    print(ad);
+    return "I love $ad";
+  }
+
+  int hesapla(int number1, int number2) {
+    return number1 * number2;
+  }
+
+// vergi hesabı tax
+// vergi değeri belli. Fakat tekrar oluturmak istersen parametre de adını yazıp: eşitleyebiliriz.
+  double vergi_hsp(double price) {
+    var taxRate = 18;
+    return price * (taxRate / 100) + price;
+  }
+
+//{conditional param.}
+  double vergi_hsp2(double price, {var taxRate = 18}) {
+    return price * (taxRate / 100) + price;
+  }
+
+// Parametreyi belirtmek istemzsen, [ ] kullan.
+  double vergi_hsp3(double price, [var taxRate = 15]) {
+    return price * (taxRate / 100) + price;
+  }
+
+  double calculate_tax(double price, {var taxRate = 18}) {
+    var netPrice = price * (taxRate / 100) + price;
+    if (netPrice > 100) {
+      return 100;
+    }
+    return netPrice;
+  }
 }
