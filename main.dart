@@ -302,3 +302,68 @@ void main() {
     return netPrice;
   }
 }
+//main fonk. dışında global alanda.
+import 'dart:math';
+
+var list = [1, 2, 3];
+void main() {
+  //Listeler set map
+
+  list.add(4);
+  print(list.length);
+  //içerir
+
+  if (!list.contains(5)) {
+    print("\$ yok");
+    list.add(5);
+    print(list.length);
+  }
+
+  var stringList = ["Ali", "Ahsen", "Ayberk", "Burcu", "Cevriye", "Kemal"];
+  print(stringList.length);
+  print(stringList.removeAt(0));
+  print(stringList[0].toString());
+  print(stringList.length);
+
+  //list.contains(7)...
+  //list2 oluştu ama liste içide sadece return edilen eleman var. Diğerleri null. Bundan kaçmak için map yerine, where demek uygun.
+  var list2 = list.map((e) {
+    if (e == 3) {
+      return e;
+    }
+  }).toList();
+  print(list2.length);
+  print(list2);
+  print(list2[2].toString());
+  print(list2[3].toString());
+
+  var list3 = list.where((e) => e == 3 || e == 10).toList();
+  print(list3);
+  print(list3.length);
+  print(list2[0].toString());
+  print(list2[1].toString());
+
+//set ve map
+  // set= hafızada tutulan ve maplenebilen stack eleman. listin yaptığı her işi metotlarla yapar.  var list = <String>{"asd","fgh","jkl","şi"};
+  var list4 = <int>{1, 2, 3, 4, 5};
+  //Mapler <int,int> <string,string> <int,string> <string ,int> halinde<String, dynamic> tutulabilir.
+  //dynamic bize istediği değeri tutturur. value değerleri 5, true,"a", 3.5 olabilir. Hatta bu valuelar içlerinde obje  bile olabilir. [1,2,3] {"1","abc","10"
+  //map, key(string)-value olarak tutulur.
+  Map<String, int> list5 = {
+    "Ali": 5,
+    "Hasan": 10,
+    "Melike": 25,
+    "Cansel": 9,
+    "Tuğçe": 85
+  };
+  print(list5.containsKey("Tuğçe"));
+  print(list5.containsKey("Selin"));
+  print(list5.containsValue(85));
+  print(list5.containsValue(100));
+}
+
+//Fonksiyon tanımla. Verdiğim numaraya göre listede kontrol yapsın.
+bool checktList(int number) {
+  return list.contains(number);
+}
+
