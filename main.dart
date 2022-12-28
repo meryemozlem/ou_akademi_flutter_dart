@@ -366,4 +366,163 @@ void main() {
 bool checktList(int number) {
   return list.contains(number);
 }
+//main fonk. dışında global alanda.
+import 'dart:math';
 
+//global listimiz var
+var list = [1, 2, 3];
+void main() {
+  //listeler set map
+
+  list.add(4);
+  print(list.length);
+  //içerir mi
+
+  if (!list.contains(5)) {
+    print("\$ yok");
+    list.add(5);
+    print(list.length);
+  }
+
+  var stringList = ["Ali", "Ahsen", "Ayberk", "Burcu", "Kemal"];
+  print(stringList.length);
+  print(stringList.removeAt(0));
+  print(stringList[0].toString());
+  print(stringList.length);
+
+  //list.contains(7)... ya da checkList(3)
+
+  //list2 oluştu ama liste içide sadece return edilen eleman var. Diğerleri null. Bundan kaçmak için map yerine, where demek uygun.
+  //3.dolu diğerleri null
+  var list2 = list.map((e) {
+    if (e == 3) {
+      return e;
+    }
+  }).toList();
+  print(list2.length);
+  print(list2);
+  print(list2[2].toString());
+  print(list2[3].toString());
+
+//şuna eşit olanları listeye eşitle
+  var list3 = list.where((e) => e == 3 || e == 10).toList();
+  print(list3);
+  print(list3.length);
+  print(list2[0].toString());
+  print(list2[1].toString());
+
+//set ve map
+  // set= hafızada tutulan ve maplenebilen stack eleman. listin yaptığı her işi metotlarla yapar.
+  // set: var list = <String>{"asd","fgh","jkl","şi","möa"};
+  var list4 = <int>{1, 2, 3, 4, 5};
+  //Mapler <int,int> <string,string> <int,string> <string ,int> halinde<String, dynamic> tutulabilir.
+  //dynamic bize istediği değeri tutturur. value değerleri 5, true,"a", 3.5 olabilir. Hatta bu valuelar içlerinde obje  bile olabilir."A": [1,2,3] {"1","abc","10"}
+
+  //map, key(string)-value olarak tutulur.
+  Map<String, int> list5 = {
+    "Ali": 5,
+    "Hasan": 10,
+    "Melike": 25,
+    "Cansel": 9,
+    "Tuğçe": 85
+  };
+  print(list5.containsKey("Tuğçe"));
+  print(list5.containsKey("Selin"));
+  print(list5.containsValue(85));
+  print(list5.containsValue(100));
+
+//class ve fonksiyon çağırmaca
+  Student student1 = Student.primary(note: 20);
+  Student student2 = Student(name: "Beyza", note: 10);
+  Student student3 = Student(note: 33, name: "Ayşe");
+  //cagir
+  student1.createStudent();
+  print(student1.name);
+  print(student2);
+  student3.createStudent();
+  student1.setName = "Bob";
+  print(student1.name);
+
+  student1.createStudent();
+  print(student1.getName);
+  student1.setName = "Jake";
+  print(student1.getName);
+
+  //kalıtım
+  print(student1.lessons[2]);
+  //void old. için @override , geçersiz boş . print yazdırmadan abstract class içindeki kod çalışmış olur.
+
+  student2.takesClass(3);
+}
+
+//Fonksiyon tanımla. Verdiğim numaraya göre listede kontrol yapsın.
+bool checktList(int number) {
+  return list.contains(number);
+}
+
+//Nesne Tabanlı Programlama
+//OOP Sınıf nesne yapıları, özellik tanımları ve işlemler
+
+class Student extends Okul {
+  //nullable =?= null olabilir
+  //String? name;
+  //int? not;
+
+  String name; //isim zorunlu
+  final int note;
+
+// getter ve setter. objeyi güvenli almak ve yazmak için. objeler üstünde kolay hakimiyet
+//sınıf içindeki private değişkenlere dışarıdan eriş
+// o anki sınıf objesinin işaretcisi this dir
+
+  String get getName => name;
+  int get getNote => note;
+  //note u str almak için: Sting get getNote=>note.toString();
+// class içindeki obj yi tekrar değiştirmek için setter lazım
+
+  set setName(String name1) {
+    this.name = name1; //final kaldırılır.
+  }
+
+// takesClass dışında olan ve daha kolay tanımlanan @override olayı
+//Polimorfizm'de üst sınıfta kullanılmış olan bir özelliği, işlevi veya uygulamayı güncellemek veya değiştirmek için yeni sınıfta @override etiketi kullanılarak baştan yazılır.
+  @override
+  void takesClass(int i) {
+    //null gelmesin diye
+    super.takesClass(i);
+  }
+
+  //Bu classı çağırmak ve üzerinde işlem yapmak için constructor(yapıcı) a ihtiyacım var.
+  // generate edildi. alt enter. isimli yapıcılar da var.primary gibi. şimdi bunu void main de işlerim.
+  Student.primary({
+    //sadece not istenir, name zorunlu değil !note zorunlu
+    this.name = "Alice",
+    required this.note,
+  });
+
+  Student({
+    required this.name,
+    required this.note,
+  });
+
+  //sınıf içi fonksiyon
+  createStudent() {
+    print("${this.name} ${this.note}");
+  }
+
+  //Araba örneği ve objeleri bu konu içine eklenebilir.
+}
+
+// Kalıtım(abstract) ve PoliMorfizm: önceden oluşturulan classı başka bir classla extend ederek (genişleterek) diğer classın özellikleri kullanılır. Sınıflar extend edilince, her 2 sınıfın da özelliklerine tek bir objeden(student) erişilir. Farklı classlar birleşimi.
+//Küçük classları ana classdan extend al.
+// Okulu Student a extend yaptım. Bu sayede studetn içinde lessons ları kullanırım.
+abstract class Okul {
+  List<String> lessons = ["Math", "Physics", "Chemistry", "Biology"];
+// fonksiyon deneyleri. okul içinde olan takesClass fonkdiyonu artık Studetn sınıfı içinde çalıştı.
+
+  takesClass(int i) {
+    //return lessons[3]; // normal class
+    print(lessons[i]); //abstarct class
+  }
+}
+//Ek olarak class Okula başka bir sınıfı extend etsek, bu yeni sınıf özelliklerine Student den bile erişebiliriz.
