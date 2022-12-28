@@ -4,3 +4,5 @@ değişkenler
 Veri Tipleri
 Operatörler
 Koşul ve Döngüler
+
+SSs
